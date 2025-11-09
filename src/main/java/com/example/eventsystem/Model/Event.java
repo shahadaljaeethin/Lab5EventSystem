@@ -14,5 +14,5 @@ private String ID,description;
 //startDate,endDate
 private int capacity;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime startDate,endDate;
+    private LocalDateTime startDate= LocalDateTime.now(),endDate;
 }

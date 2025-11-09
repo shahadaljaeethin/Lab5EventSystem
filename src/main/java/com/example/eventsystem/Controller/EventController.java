@@ -4,6 +4,7 @@ import com.example.eventsystem.Api.ApiResponse;
 import com.example.eventsystem.Model.Event;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @RestController
@@ -13,6 +14,7 @@ ArrayList<Event> events = new ArrayList<>();
 //-----------
 @PostMapping("/add")
 public ApiResponse createEvent(@RequestBody Event e){
+e.setStartDate(LocalDateTime.now());
 events.add(e);
 return new ApiResponse("Event "+e.getID()+" is added.");
 }
