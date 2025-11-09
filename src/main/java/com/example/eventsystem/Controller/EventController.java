@@ -40,9 +40,12 @@ public ApiResponse delete(@PathVariable String ID){
 events.remove(in);
 return new ApiResponse("Event removed.");
 }
-@PutMapping("/update/capacity/{index}/{capacity}")
-public ApiResponse changeCapacity(@PathVariable int index, @PathVariable int capacity)
+@PutMapping("/update/capacity/{id}/{capacity}")
+public ApiResponse changeCapacity(@PathVariable String id, @PathVariable int capacity)
 {
+int index=0;
+for(Event e:events){if(e.getID().equals(id))break; else index++;}
+
 int oldCap = events.get(index).getCapacity();
 events.get(index).setCapacity(capacity);
 return new ApiResponse("capacity updated from "+oldCap+" to "+events.get(index).getCapacity());
